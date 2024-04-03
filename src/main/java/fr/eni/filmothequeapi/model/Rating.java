@@ -9,19 +9,23 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+    @Column(name = "note")
+    Integer note;
     @Column(name = "comment", length = 500)
     String comment;
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public Rating(long id, String comment, Member member) {
+    public Rating(long id, Integer note, String comment, Member member) {
         this.id = id;
+        this.note = note;
         this.comment = comment;
         this.member = member;
     }
 
-    public Rating(String comment, Member member) {
+    public Rating(Integer note, String comment, Member member) {
+        this.note = note;
         this.comment = comment;
         this.member = member;
     }
@@ -36,6 +40,14 @@ public class Rating {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Integer getNote() {
+        return note;
+    }
+
+    public void setNote(Integer note) {
+        this.note = note;
     }
 
     public String getComment() {
@@ -58,6 +70,7 @@ public class Rating {
     public String toString() {
         return "Rating{" +
                 "id=" + id +
+                "note=" + note +
                 ", comment='" + comment + '\'' +
                 ", member=" + member +
                 '}';

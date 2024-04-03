@@ -2,16 +2,14 @@ package fr.eni.filmothequeapi.controllers;
 
 import fr.eni.filmothequeapi.model.Movie;
 import fr.eni.filmothequeapi.services.MovieService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 public class MovieController {
 
@@ -24,5 +22,10 @@ public class MovieController {
     @GetMapping("/movies")
     public List<Movie> getAllMovies(){
         return movieService.getAllMovies();
+    }
+
+    @GetMapping("/movies/{movieId}")
+    public Optional<Movie> getMovieById(@PathVariable String movieId){
+        return movieService.getMovieById(Long.parseLong(movieId));
     }
 }
