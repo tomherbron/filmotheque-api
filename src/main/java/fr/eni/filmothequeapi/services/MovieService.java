@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MovieService {
-    List<Movie> getAllMovies();
-    Optional<Movie> getMovieById(long id);
-    void addMovie();
-    void updateMovie();
-    void deleteMovie();
+    public List<Movie> getAllMovies();
+    public Optional<Movie> getMovieById(long id);
+    public void addMovie();
+    public void updateMovie();
+    public void deleteMovie();
 
 }
