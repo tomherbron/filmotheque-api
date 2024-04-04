@@ -1,5 +1,7 @@
 package fr.eni.filmothequeapi.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Rating {
     String comment;
     @ManyToOne
     @JoinColumn(name = "member_id")
+    @JsonBackReference
     private Member member;
 
     public Rating(long id, Integer note, String comment, Member member) {

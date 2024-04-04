@@ -1,5 +1,6 @@
 package fr.eni.filmothequeapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Member extends Person {
     @Column(name = "is_admin")
     private boolean isAdmin;
     @OneToMany(mappedBy = "member")
+    @JsonManagedReference
     private List<Rating> ratings = new ArrayList<>();
 
     public Member(long id, String lastName, String firstName, String userName, String password, boolean isAdmin,
