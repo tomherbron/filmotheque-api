@@ -10,11 +10,7 @@ import java.util.Optional;
 @Service
 public class MovieServiceImplementation implements MovieService {
 
-    MovieRepository movieRepository;
-
-    private MovieServiceImplementation(MovieRepository movieRepository){
-        this.movieRepository = movieRepository;
-    }
+    private MovieRepository movieRepository;
 
     @Override
     public List<Movie> getAllMovies() {
@@ -22,22 +18,22 @@ public class MovieServiceImplementation implements MovieService {
     }
 
     @Override
-    public Optional<Movie> getMovieById(long id) {
-        return movieRepository.findById(id);
+    public Optional<Movie> getMovieById(long movieId) {
+        return movieRepository.findById(movieId);
     }
 
     @Override
-    public void addMovie() {
-
-    }
-
-    @Override
-    public void updateMovie() {
+    public void addMovie(Movie movie) {
 
     }
 
     @Override
-    public void deleteMovie() {
+    public void updateMovie(long movieId, Movie movie) {
+
+    }
+
+    @Override
+    public void deleteMovieById(long movieId) {
 
     }
 }
