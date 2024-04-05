@@ -1,14 +1,15 @@
-package fr.eni.filmothequeapi.services;
+package fr.eni.filmothequeapi.services.implementations;
 
 import fr.eni.filmothequeapi.model.Genre;
 import fr.eni.filmothequeapi.repository.GenreRepository;
+import fr.eni.filmothequeapi.services.interfaces.GenreService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GenreServiceImpl implements GenreService{
+public class GenreServiceImpl implements GenreService {
 
     private final GenreRepository genreRepository;
 

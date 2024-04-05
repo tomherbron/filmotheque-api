@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.services;
+package fr.eni.filmothequeapi.services.interfaces;
 
 import fr.eni.filmothequeapi.model.Genre;
 import fr.eni.filmothequeapi.model.Movie;

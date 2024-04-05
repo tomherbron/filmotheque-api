@@ -1,7 +1,8 @@
-package fr.eni.filmothequeapi.services;
+package fr.eni.filmothequeapi.services.implementations;
 
 import fr.eni.filmothequeapi.model.Movie;
 import fr.eni.filmothequeapi.repository.MovieRepository;
+import fr.eni.filmothequeapi.services.interfaces.MovieService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
