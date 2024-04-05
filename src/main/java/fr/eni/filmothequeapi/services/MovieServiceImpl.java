@@ -8,9 +8,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MovieServiceImplementation implements MovieService {
+public class MovieServiceImpl implements MovieService {
 
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
+
+    public MovieServiceImpl(MovieRepository movieRepository){
+        this.movieRepository = movieRepository;
+    }
 
     @Override
     public List<Movie> getAllMovies() {
