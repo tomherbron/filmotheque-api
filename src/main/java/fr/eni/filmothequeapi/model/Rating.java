@@ -1,7 +1,6 @@
 package fr.eni.filmothequeapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,26 +10,36 @@ public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_fk")
+    @JsonBackReference
+    private Movie movie;
+
     @Column(name = "note")
     Integer note;
+
     @Column(name = "comment", length = 500)
     String comment;
-    @ManyToOne
-    @JoinColumn(name = "member_id")
-    @JsonBackReference
-    private Member member;
 
-    public Rating(long id, Integer note, String comment, Member member) {
+    @ManyToOne
+    @JoinColumn(name = "user_fk")
+    @JsonBackReference
+    private User user;
+
+    public Rating(long id, Movie movie, Integer note, String comment, User user) {
         this.id = id;
+        this.movie = movie;
         this.note = note;
         this.comment = comment;
-        this.member = member;
+        this.user = user;
     }
 
-    public Rating(Integer note, String comment, Member member) {
+    public Rating(Movie movie, Integer note, String comment, User user) {
+        this.movie = movie;
         this.note = note;
         this.comment = comment;
-        this.member = member;
+        this.user = user;
     }
 
     public Rating() {
@@ -43,6 +52,22 @@ public class Rating {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Integer getNote() {
@@ -61,21 +86,14 @@ public class Rating {
         this.comment = comment;
     }
 
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
     @Override
     public String toString() {
         return "Rating{" +
                 "id=" + id +
-                "note=" + note +
+                ", movie=" + movie +
+                ", note=" + note +
                 ", comment='" + comment + '\'' +
-                ", member=" + member +
+                ", user=" + user +
                 '}';
     }
 }

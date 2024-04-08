@@ -1,7 +1,9 @@
 package fr.eni.filmothequeapi.services.implementations;
 
+import fr.eni.filmothequeapi.model.Genre;
 import fr.eni.filmothequeapi.model.Movie;
-import fr.eni.filmothequeapi.repository.MovieRepository;
+import fr.eni.filmothequeapi.repositories.GenreRepository;
+import fr.eni.filmothequeapi.repositories.MovieRepository;
 import fr.eni.filmothequeapi.services.interfaces.MovieService;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,11 @@ import java.util.Optional;
 public class MovieServiceImpl implements MovieService {
 
     private final MovieRepository movieRepository;
+    private final GenreRepository genreRepository;
 
-    public MovieServiceImpl(MovieRepository movieRepository){
+    public MovieServiceImpl(MovieRepository movieRepository, GenreRepository genreRepository){
         this.movieRepository = movieRepository;
+        this.genreRepository = genreRepository;
     }
 
     @Override
@@ -40,5 +44,15 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public void deleteMovieById(long movieId) {
 
+    }
+
+    @Override
+    public List<Genre> getAllGenres() {
+        return genreRepository.findAll();
+    }
+
+    @Override
+    public Optional<Genre> getGenreById(long genreId) {
+        return genreRepository.findById(genreId);
     }
 }

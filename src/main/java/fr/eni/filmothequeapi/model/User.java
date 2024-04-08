@@ -7,21 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@PrimaryKeyJoinColumn(name = "person_id")
-@Table(name = "member")
-public class Member extends Person {
+@Table(name = "users")
+public class User extends Person {
     @Column(name = "user_name", length = 255)
     private String userName;
     @Column(name = "password", length = 255)
     private String password;
     @Column(name = "is_admin")
     private boolean isAdmin;
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Rating> ratings = new ArrayList<>();
 
-    public Member(long id, String lastName, String firstName, String userName, String password, boolean isAdmin,
-                  List<Rating> ratings) {
+    public User(long id, String lastName, String firstName, String userName, String password, boolean isAdmin,
+                List<Rating> ratings) {
         super(id, lastName, firstName);
         this.userName = userName;
         this.password = password;
@@ -29,8 +28,8 @@ public class Member extends Person {
         this.ratings = ratings;
     }
 
-    public Member(String lastName, String firstName, String userName, String password, boolean isAdmin,
-                  List<Rating> ratings) {
+    public User(String lastName, String firstName, String userName, String password, boolean isAdmin,
+                List<Rating> ratings) {
         super(lastName, firstName);
         this.userName = userName;
         this.password = password;
@@ -38,7 +37,7 @@ public class Member extends Person {
         this.ratings = ratings;
     }
 
-    public Member() {
+    public User() {
 
     }
 
@@ -76,7 +75,7 @@ public class Member extends Person {
 
     @Override
     public String toString() {
-        return "Member{" +
+        return "User{" +
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", isAdmin=" + isAdmin +

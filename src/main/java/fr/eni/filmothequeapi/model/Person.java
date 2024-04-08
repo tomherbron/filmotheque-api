@@ -1,17 +1,15 @@
 package fr.eni.filmothequeapi.model;
-
 import jakarta.persistence.*;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "person")
+
+@MappedSuperclass
 public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "last_name", length = 255)
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name = "first_name", length = 255)
+    @Column(name = "first_name")
     private String firstName;
 
     public Person() {}

@@ -1,5 +1,6 @@
 package fr.eni.filmothequeapi.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -20,22 +21,24 @@ public class Movie {
     @Column(name = "synopsis", length = 2000)
     private String synopsis;
     @ManyToOne
-    @JoinColumn(name = "genre_id")
+    @JoinColumn(name = "genre_fk")
     private Genre genre;
     @ManyToOne
-    @JoinColumn(name = "director_id")
+    @JoinColumn(name = "director_fk")
     private Attendee director;
     @ManyToMany
+    @JoinTable(
+            name = "movies_actors",
+            joinColumns = @JoinColumn(name = "movie_fk"),
+            inverseJoinColumns = @JoinColumn(name = "actor_fk")
+    )
     private List<Attendee> actors = new ArrayList<>();
-    @OneToMany
-    @JoinColumn(name = "rating_id")
-    private List<Rating> ratings = new ArrayList<>();
 
     public Movie() {
     }
 
     public Movie(long id, String title, Integer year, Integer duration, String synopsis, Genre genre, Attendee director,
-                 List<Attendee> actors, List<Rating> ratings) {
+                 List<Attendee> actors) {
         this.id = id;
         this.title = title;
         this.year = year;
@@ -44,11 +47,10 @@ public class Movie {
         this.genre = genre;
         this.director = director;
         this.actors = actors;
-        this.ratings = ratings;
     }
 
     public Movie(String title, Integer year, Integer duration, String synopsis, Genre genre, Attendee director,
-                 List<Attendee> actors, List<Rating> ratings) {
+                 List<Attendee> actors) {
         this.title = title;
         this.year = year;
         this.duration = duration;
@@ -56,7 +58,6 @@ public class Movie {
         this.genre = genre;
         this.director = director;
         this.actors = actors;
-        this.ratings = ratings;
     }
 
     public long getId() {
@@ -123,14 +124,6 @@ public class Movie {
         this.actors = actors;
     }
 
-    public List<Rating> getRatings() {
-        return ratings;
-    }
-
-    public void setRatings(List<Rating> ratings) {
-        this.ratings = ratings;
-    }
-
     @Override
     public String toString() {
         return "Movie{" +
@@ -142,7 +135,6 @@ public class Movie {
                 ", genre=" + genre +
                 ", director=" + director +
                 ", actors=" + actors +
-                ", ratings=" + ratings +
                 '}';
     }
 }
