@@ -21,7 +21,6 @@ public class User extends Person implements UserDetails {
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Rating> ratings = new ArrayList<>();
-
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_fk"),

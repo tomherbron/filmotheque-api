@@ -5,11 +5,9 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "genres")
 public class Genre {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-
     @Column(name = "title", length = 255, unique = true)
     String title;
 

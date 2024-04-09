@@ -6,22 +6,17 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "ratings")
 public class Rating {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-
     @ManyToOne
     @JoinColumn(name = "movie_fk")
     @JsonBackReference
     private Movie movie;
-
     @Column(name = "note")
     Integer note;
-
     @Column(name = "comment", length = 500)
     String comment;
-
     @ManyToOne
     @JoinColumn(name = "user_fk")
     @JsonBackReference
