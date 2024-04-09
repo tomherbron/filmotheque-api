@@ -55,4 +55,5 @@ public class MovieServiceImpl implements MovieService {
     public Optional<Genre> getGenreById(long genreId) {
         return genreRepository.findById(genreId);
     }
+
 }

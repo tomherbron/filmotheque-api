@@ -10,7 +10,7 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @Column(name = "title", length = 255)
+    @Column(name = "title", length = 255, unique = true)
     String title;
 
     public Genre(long id, String title) {

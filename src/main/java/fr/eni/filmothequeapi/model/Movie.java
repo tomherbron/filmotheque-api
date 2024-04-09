@@ -12,7 +12,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "title", length = 255)
+    @Column(name = "title", length = 255, unique = true)
     private String title;
     @Column(name = "year")
     private Integer year;

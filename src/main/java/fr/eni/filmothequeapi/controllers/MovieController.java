@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class MovieController {
 
-    MovieService movieService;
+    private final MovieService movieService;
 
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
