@@ -2,30 +2,42 @@ package fr.eni.filmothequeapi.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "movies")
 public class Movie {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(name = "title", length = 255, unique = true)
     private String title;
+
     @Column(name = "year")
     private Integer year;
+
     @Column(name = "duration")
     private Integer duration;
+
     @Column(name = "synopsis", length = 2000)
     private String synopsis;
+
     @ManyToOne
     @JoinColumn(name = "genre_fk")
     private Genre genre;
+
     @ManyToOne
     @JoinColumn(name = "director_fk")
     private Attendee director;
+
     @ManyToMany
     @JoinTable(
             name = "movies_actors",
@@ -57,70 +69,6 @@ public class Movie {
         this.synopsis = synopsis;
         this.genre = genre;
         this.director = director;
-        this.actors = actors;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getDuration() {
-        return duration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
-    public String getSynopsis() {
-        return synopsis;
-    }
-
-    public void setSynopsis(String synopsis) {
-        this.synopsis = synopsis;
-    }
-
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
-    public Attendee getDirector() {
-        return director;
-    }
-
-    public void setDirector(Attendee director) {
-        this.director = director;
-    }
-
-    public List<Attendee> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<Attendee> actors) {
         this.actors = actors;
     }
 

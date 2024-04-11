@@ -2,21 +2,30 @@ package fr.eni.filmothequeapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "ratings")
 public class Rating {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
     @ManyToOne
     @JoinColumn(name = "movie_fk")
     @JsonBackReference
     private Movie movie;
+
     @Column(name = "note")
     Integer note;
+
     @Column(name = "comment", length = 500)
     String comment;
+
     @ManyToOne
     @JoinColumn(name = "user_fk")
     @JsonBackReference
@@ -39,46 +48,6 @@ public class Rating {
 
     public Rating() {
 
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Movie getMovie() {
-        return movie;
-    }
-
-    public void setMovie(Movie movie) {
-        this.movie = movie;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Integer getNote() {
-        return note;
-    }
-
-    public void setNote(Integer note) {
-        this.note = note;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     @Override

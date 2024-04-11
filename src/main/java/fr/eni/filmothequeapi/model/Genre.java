@@ -1,13 +1,19 @@
 package fr.eni.filmothequeapi.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "genres")
 public class Genre {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
+
     @Column(name = "title", length = 255, unique = true)
     String title;
 
@@ -22,22 +28,6 @@ public class Genre {
 
     public Genre() {
 
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     @Override
