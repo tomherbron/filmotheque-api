@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.services.auth;
+package fr.eni.filmothequeapi.services.auth.utils;
 
 import lombok.*;
 

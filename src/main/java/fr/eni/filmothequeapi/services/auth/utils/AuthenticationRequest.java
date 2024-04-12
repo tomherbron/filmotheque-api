@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.services.auth;
+package fr.eni.filmothequeapi.services.auth.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,11 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterRequest {
+public class AuthenticationRequest {
 
-    private String firstName;
-    private String lastName;
-    private String username;
     private String email;
     private String password;
 
