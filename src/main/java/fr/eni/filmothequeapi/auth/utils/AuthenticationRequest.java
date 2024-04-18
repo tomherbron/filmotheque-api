@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.services.auth.utils;
+package fr.eni.filmothequeapi.auth.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,11 +1,11 @@
 package fr.eni.filmothequeapi.services.auth;
 
-import fr.eni.filmothequeapi.config.auth.JwtService;
+import fr.eni.filmothequeapi.auth.JwtService;
 import fr.eni.filmothequeapi.model.User;
 import fr.eni.filmothequeapi.repositories.UserRepository;
-import fr.eni.filmothequeapi.services.auth.utils.AuthenticationRequest;
-import fr.eni.filmothequeapi.services.auth.utils.AuthenticationResponse;
-import fr.eni.filmothequeapi.services.auth.utils.RegisterRequest;
+import fr.eni.filmothequeapi.auth.utils.AuthenticationRequest;
+import fr.eni.filmothequeapi.auth.utils.AuthenticationResponse;
+import fr.eni.filmothequeapi.auth.utils.RegisterRequest;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,7 +40,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         String token = jwtService.generateToken(user);
 
-        return new AuthenticationResponse(token);
+        return new AuthenticationResponse(200, token);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         String token = jwtService.generateToken(user);
 
-        return new AuthenticationResponse(token);
+        return new AuthenticationResponse(200, token);
     }
 
 

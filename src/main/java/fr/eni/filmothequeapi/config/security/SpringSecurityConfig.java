@@ -1,6 +1,6 @@
 package fr.eni.filmothequeapi.config.security;
 
-import fr.eni.filmothequeapi.config.auth.JwtAuthenticationFilter;
+import fr.eni.filmothequeapi.auth.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

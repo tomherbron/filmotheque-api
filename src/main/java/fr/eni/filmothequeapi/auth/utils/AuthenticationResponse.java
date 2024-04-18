@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.services.auth.utils;
+package fr.eni.filmothequeapi.auth.utils;
 
 import lombok.*;
 
@@ -7,6 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 public class AuthenticationResponse {
 
+    private int statusCode;
     private String token;
 
 }

@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.config.auth;
+package fr.eni.filmothequeapi.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

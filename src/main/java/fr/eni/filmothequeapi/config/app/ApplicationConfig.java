@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.config;
+package fr.eni.filmothequeapi.config.app;
 
 import fr.eni.filmothequeapi.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

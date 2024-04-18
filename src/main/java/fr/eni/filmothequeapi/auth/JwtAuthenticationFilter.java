@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.config.auth;
+package fr.eni.filmothequeapi.auth;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
