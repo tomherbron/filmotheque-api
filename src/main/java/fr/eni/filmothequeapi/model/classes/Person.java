@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.model;
+package fr.eni.filmothequeapi.model.classes;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

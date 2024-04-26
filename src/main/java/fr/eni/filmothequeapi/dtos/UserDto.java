@@ -1,4 +1,4 @@
 package fr.eni.filmothequeapi.dtos;
 
-public class MovieDto {
+public class UserDto {
 }

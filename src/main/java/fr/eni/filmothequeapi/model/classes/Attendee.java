@@ -1,11 +1,14 @@
-package fr.eni.filmothequeapi.model;
+package fr.eni.filmothequeapi.model.classes;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "attendees")
+@Getter
+@Setter
 public class Attendee extends Person {
 
     public Attendee() {

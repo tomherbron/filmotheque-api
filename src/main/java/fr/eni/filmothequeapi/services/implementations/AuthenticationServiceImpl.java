@@ -1,11 +1,15 @@
-package fr.eni.filmothequeapi.services.auth;
+package fr.eni.filmothequeapi.services.implementations;
 
 import fr.eni.filmothequeapi.auth.JwtService;
-import fr.eni.filmothequeapi.model.User;
+import fr.eni.filmothequeapi.model.classes.User;
 import fr.eni.filmothequeapi.repositories.UserRepository;
 import fr.eni.filmothequeapi.auth.utils.AuthenticationRequest;
 import fr.eni.filmothequeapi.auth.utils.AuthenticationResponse;
 import fr.eni.filmothequeapi.auth.utils.RegisterRequest;
+import fr.eni.filmothequeapi.services.interfaces.AuthenticationService;
+import fr.eni.filmothequeapi.utils.exceptions.DataIntregityViolation;
+import fr.eni.filmothequeapi.utils.exceptions.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,19 +32,26 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public AuthenticationResponse register(RegisterRequest request){
-        User user = new User();
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setUsername(request.getUsername());
-        user.setEmail(request.getEmail());
-        user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRoles(user.getRoles());
 
-        user = userRepository.save(user);
+        try {
 
-        String token = jwtService.generateToken(user);
+            User user = new User();
+            user.setFirstName(request.getFirstName());
+            user.setLastName(request.getLastName());
+            user.setUsername(request.getUsername());
+            user.setEmail(request.getEmail());
+            user.setPassword(passwordEncoder.encode(request.getPassword()));
+            user.setRoles(user.getRoles());
 
-        return new AuthenticationResponse(200, token);
+            user = userRepository.save(user);
+            String token = jwtService.generateToken(user);
+
+            return new AuthenticationResponse(HttpStatus.OK.value(), token);
+
+        } catch (DataIntregityViolation e){
+            return new AuthenticationResponse(HttpStatus.BAD_REQUEST.value(),
+                    "Username or email already exists.");
+        }
     }
 
     @Override
@@ -48,11 +59,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         authenticationManager.authenticate
                 (new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
 
-        User user = userRepository.findUserByEmail(request.getEmail()).orElseThrow();
-
+        User user = userRepository.findUserByEmail(request.getEmail())
+                .orElseThrow(() -> new ResourceNotFoundException("Authentication failed. Please check credentials."));
         String token = jwtService.generateToken(user);
 
-        return new AuthenticationResponse(200, token);
+        return new AuthenticationResponse(HttpStatus.OK.value(), token);
     }
 
 

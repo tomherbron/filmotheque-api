@@ -2,7 +2,7 @@ package fr.eni.filmothequeapi.controllers;
 
 import fr.eni.filmothequeapi.auth.utils.AuthenticationRequest;
 import fr.eni.filmothequeapi.auth.utils.AuthenticationResponse;
-import fr.eni.filmothequeapi.services.auth.AuthenticationService;
+import fr.eni.filmothequeapi.services.interfaces.AuthenticationService;
 import fr.eni.filmothequeapi.auth.utils.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

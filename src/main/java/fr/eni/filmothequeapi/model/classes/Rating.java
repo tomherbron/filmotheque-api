@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.model;
+package fr.eni.filmothequeapi.model.classes;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -21,7 +21,7 @@ public class Rating {
     private Movie movie;
 
     @Column(name = "note")
-    Integer note;
+    int note;
 
     @Column(name = "comment", length = 500)
     String comment;
@@ -31,7 +31,7 @@ public class Rating {
     @JsonBackReference
     private User user;
 
-    public Rating(long id, Movie movie, Integer note, String comment, User user) {
+    public Rating(long id, Movie movie, int note, String comment, User user) {
         this.id = id;
         this.movie = movie;
         this.note = note;
@@ -39,7 +39,7 @@ public class Rating {
         this.user = user;
     }
 
-    public Rating(Movie movie, Integer note, String comment, User user) {
+    public Rating(Movie movie, int note, String comment, User user) {
         this.movie = movie;
         this.note = note;
         this.comment = comment;

@@ -1,6 +1,6 @@
 package fr.eni.filmothequeapi.controllers;
 
-import fr.eni.filmothequeapi.model.Movie;
+import fr.eni.filmothequeapi.model.classes.Movie;
 import fr.eni.filmothequeapi.services.interfaces.MovieService;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
-package fr.eni.filmothequeapi.model;
+package fr.eni.filmothequeapi.model.classes;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import fr.eni.filmothequeapi.model.enums.Genre;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,8 +30,7 @@ public class Movie {
     @Column(name = "synopsis", length = 2000)
     private String synopsis;
 
-    @ManyToOne
-    @JoinColumn(name = "genre_fk")
+    @Column(name = "genre")
     private Genre genre;
 
     @ManyToOne
@@ -40,9 +39,9 @@ public class Movie {
 
     @ManyToMany
     @JoinTable(
-            name = "movies_actors",
+            name = "movies_casting",
             joinColumns = @JoinColumn(name = "movie_fk"),
-            inverseJoinColumns = @JoinColumn(name = "actor_fk")
+            inverseJoinColumns = @JoinColumn(name = "attendee_fk")
     )
     private List<Attendee> actors = new ArrayList<>();
 

@@ -1,4 +1,4 @@
-package fr.eni.filmothequeapi.services.auth;
+package fr.eni.filmothequeapi.services.interfaces;
 
 import fr.eni.filmothequeapi.auth.utils.AuthenticationRequest;
 import fr.eni.filmothequeapi.auth.utils.AuthenticationResponse;
