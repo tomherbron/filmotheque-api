@@ -9,5 +9,4 @@ public interface UserService {
     // Add to favourite genres
     // Update user infos
     // Delete user
-
 }

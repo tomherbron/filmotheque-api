@@ -10,7 +10,8 @@ public enum Genre {
     HORROR(4, "Horror"),
     ROMANCE(5, "Romance"),
     SCIENCE_FICTION(6, "Science Fiction"),
-    THRILLER(7, "Thriller");
+    THRILLER(7, "Thriller"),
+    FANTASY(8, "Fantasy");
 
     private final int id;
     private final String displayName;

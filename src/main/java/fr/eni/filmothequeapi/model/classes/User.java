@@ -16,7 +16,7 @@ import java.util.*;
 @Table(name = "users")
 public class User extends Person implements UserDetails {
 
-    @Column(name = "user_name", length = 255, nullable = false, unique = true)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "email", nullable = false, unique = true)
@@ -28,7 +28,7 @@ public class User extends Person implements UserDetails {
     @Column(name = "gender")
     private String gender;
 
-    @Column(name = "birthDate")
+    @Column(name = "birth_date")
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
@@ -58,32 +58,36 @@ public class User extends Person implements UserDetails {
     @Column(name = "genre")
     private Set<Genre> favouriteGenres = new HashSet<>();
 
-    public User(long id, String lastName, String firstName, String username, String email, String password, String gender,
-                List<Rating> ratings, Set<Long> likedMovies, Set<Long> dislikedMovies, Set<Genre> favouriteGenres, List<Role> roles) {
+    public User(long id, String lastName, String firstName, String username, String email, String password,
+                String gender, Date birthDate, List<Role> roles, List<Rating> ratings, Set<Long> likedMovies,
+                Set<Long> dislikedMovies, Set<Genre> favouriteGenres) {
         super(id, lastName, firstName);
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
+        this.birthDate = birthDate;
+        this.roles = roles;
         this.ratings = ratings;
         this.likedMovies = likedMovies;
         this.dislikedMovies = dislikedMovies;
         this.favouriteGenres = favouriteGenres;
-        this.roles = roles;
     }
 
     public User(String lastName, String firstName, String username, String email, String password, String gender,
-                List<Rating> ratings, Set<Long> likedMovies, Set<Long> dislikedMovies, Set<Genre> favouriteGenres, List<Role> roles) {
+                Date birthDate, List<Role> roles, List<Rating> ratings, Set<Long> likedMovies, Set<Long> dislikedMovies,
+                Set<Genre> favouriteGenres) {
         super(lastName, firstName);
         this.username = username;
         this.email = email;
         this.password = password;
         this.gender = gender;
+        this.birthDate = birthDate;
+        this.roles = roles;
         this.ratings = ratings;
         this.likedMovies = likedMovies;
-        this.favouriteGenres = favouriteGenres;
         this.dislikedMovies = dislikedMovies;
-        this.roles = roles;
+        this.favouriteGenres = favouriteGenres;
     }
 
     public User() {
@@ -97,7 +101,7 @@ public class User extends Person implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
     @Override
